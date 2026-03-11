@@ -1,0 +1,348 @@
+:root {
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --text-color: #ffffff;
+    --text-muted: #a0a0a0;
+    --accent-color: #4f46e5;
+    --danger-color: #ef4444;
+    --border-color: #333333;
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+header {
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+    width: 100%;
+}
+
+h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    opacity: 0.9;
+}
+
+main {
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+    flex-grow: 1;
+}
+
+/* Notion Style Input Group */
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+}
+
+input[type="text"] {
+    flex-grow: 1;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 12px 16px;
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+button, .button-label {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s;
+    user-select: none;
+}
+
+button:hover, .button-label:hover {
+    background: #2a2a2a;
+    border-color: #444;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+#add-btn {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+#add-btn:hover {
+    filter: brightness(1.1);
+}
+
+.actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 10px;
+}
+
+.danger {
+    color: var(--danger-color);
+}
+
+.danger:hover {
+    border-color: var(--danger-color);
+    background: rgba(239, 68, 68, 0.1);
+}
+
+/* Task List */
+ul {
+    list-style: none;
+}
+
+.task-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: opacity 0.3s, transform 0.3s;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.task-content {
+    flex-grow: 1;
+    margin-right: 15px;
+    word-break: break-word;
+}
+
+.delete-task {
+    opacity: 0.5;
+    background: transparent;
+    border: none;
+    padding: 5px;
+    font-size: 1.1rem;
+}
+
+.delete-task:hover {
+    opacity: 1;
+    color: var(--danger-color);
+    background: transparent;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+/* Week Navigation */
+.week-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+    width: 100%;
+    padding: 0 10px;
+}
+
+#current-week-display {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    letter-spacing: 0.05em;
+}
+
+/* Weekly Planner Table */
+#planner-view {
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+    flex-grow: 1;
+}
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card-bg);
+    min-width: 600px; /* Evita que se colapse demasiado en móvil */
+}
+
+th, td {
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    text-align: center;
+}
+
+th {
+    background: #252525;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+}
+
+tbody td:first-child {
+    background: #252525;
+    font-weight: 600;
+    font-size: 0.9rem;
+    width: 120px;
+    text-align: left;
+}
+
+/* Integrated Selects */
+td select {
+    width: 100%;
+    background: transparent;
+    color: var(--text-color);
+    border: 1px solid transparent;
+    border-radius: 4px;
+    padding: 8px;
+    font-family: var(--font-family);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    appearance: none; /* Quita flecha por defecto para look más limpio */
+    text-align: center;
+}
+
+td select:hover {
+    border-color: var(--border-color);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+td select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+/* Tabs Navigation */
+.tab-nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+    width: 100%;
+}
+
+.tab-nav button {
+    flex: 1;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    padding: 12px;
+    border-radius: 8px;
+    color: var(--text-muted);
+}
+
+.tab-nav button.active {
+    background: var(--card-bg);
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Category Select in Inventory */
+#category-input {
+    background: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+/* Item Actions */
+.item-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.edit-btn {
+    color: var(--accent-color);
+    font-size: 1rem;
+    background: transparent;
+    border: none;
+    padding: 4px;
+}
+
+.edit-btn:hover {
+    color: #6366f1;
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+    .actions {
+        grid-template-columns: 1fr 1fr;
+    }
+    #clear-btn {
+        grid-column: span 2;
+    }
+    body {
+        padding: 15px;
+    }
+    th, td {
+        padding: 10px 5px;
+        font-size: 0.8rem;
+    }
+    tbody td:first-child {
+        width: 80px;
+        font-size: 0.75rem;
+    }
+    .input-group {
+        flex-direction: column;
+    }
+}

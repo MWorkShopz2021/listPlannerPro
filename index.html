@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Planner Pro - Minimalist Planner</title>
+    <meta name="description" content="Una aplicación de planificación minimalista, segura y offline.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#121212">
+    <!-- Icono simple -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📝</text></svg>">
+</head>
+
+<body>
+    <header>
+        <h1>List Planner Pro</h1>
+    </header>
+
+    <nav class="tab-nav">
+        <button id="tab-planner" class="active">Planificador</button>
+        <button id="tab-inventory">Inventario</button>
+    </nav>
+
+    <div id="section-planner">
+        <div class="week-nav">
+            <button id="btn-prev" title="Semana anterior">◀</button>
+            <span id="current-week-display"></span>
+            <button id="btn-next" title="Siguiente semana">▶</button>
+        </div>
+        
+        <main id="planner-view">
+            <div class="table-responsive">
+                <table id="weekly-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Lunes</th>
+                            <th>Martes</th>
+                            <th>Miércoles</th>
+                            <th>Jueves</th>
+                            <th>Viernes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-category="Blusa">
+                            <td>Blusa</td>
+                            <td data-day="0"></td>
+                            <td data-day="1"></td>
+                            <td data-day="2"></td>
+                            <td data-day="3"></td>
+                            <td data-day="4"></td>
+                        </tr>
+                        <tr data-category="Pantalón">
+                            <td>Pantalón</td>
+                            <td data-day="0"></td>
+                            <td data-day="1"></td>
+                            <td data-day="2"></td>
+                            <td data-day="3"></td>
+                            <td data-day="4"></td>
+                        </tr>
+                        <tr data-category="Zapato">
+                            <td>Zapato</td>
+                            <td data-day="0"></td>
+                            <td data-day="1"></td>
+                            <td data-day="2"></td>
+                            <td data-day="3"></td>
+                            <td data-day="4"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <div id="section-inventory" class="hidden">
+        <main id="app">
+            <section class="controls">
+                <div class="input-group">
+                    <input type="text" id="task-input" placeholder="Nombre de la prenda..." aria-label="Nueva prenda">
+                    <select id="category-input" aria-label="Categoría">
+                        <option value="Blusa">Blusa</option>
+                        <option value="Pantalón">Pantalón</option>
+                        <option value="Zapato">Zapato</option>
+                    </select>
+                    <button id="add-btn" title="Añadir">➕</button>
+                </div>
+
+                <div class="actions">
+                    <button id="export-btn" title="Exportar CSV">📥 Exportar</button>
+                    <label for="import-csv" class="button-label" title="Importar CSV">
+                        📤 Importar
+                        <input type="file" id="import-csv" accept=".csv" hidden>
+                    </label>
+                    <button id="clear-btn" class="danger" title="Limpiar todo">🗑️</button>
+                </div>
+            </section>
+
+            <section class="list-container">
+                <ul id="task-list">
+                    <!-- Las prendas se renderizarán aquí -->
+                </ul>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>Offline Ready • Secure Storage</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('SW Registered', reg))
+                    .catch(err => console.error('SW Registration failing', err));
+            });
+        }
+    </script>
+</body>
+
+</html>
