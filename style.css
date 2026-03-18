@@ -27,19 +27,6 @@ body {
     padding: 20px;
 }
 
-header {
-    max-width: 600px;
-    margin: 0 auto 30px auto;
-    width: 100%;
-}
-
-h1 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: -0.025em;
-    opacity: 0.9;
-}
-
 main {
     max-width: 600px;
     margin: 0 auto;
@@ -76,7 +63,8 @@ input[type="text"]:focus {
     border-color: var(--accent-color);
 }
 
-button, .button-label {
+button,
+.button-label {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
     color: var(--text-color);
@@ -93,7 +81,8 @@ button, .button-label {
     user-select: none;
 }
 
-button:hover, .button-label:hover {
+button:hover,
+.button-label:hover {
     background: #2a2a2a;
     border-color: #444;
 }
@@ -145,8 +134,15 @@ ul {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .task-content {
@@ -214,10 +210,12 @@ table {
     width: 100%;
     border-collapse: collapse;
     background: var(--card-bg);
-    min-width: 600px; /* Evita que se colapse demasiado en móvil */
+    min-width: 600px;
+    /* Evita que se colapse demasiado en móvil */
 }
 
-th, td {
+th,
+td {
     padding: 15px;
     border: 1px solid var(--border-color);
     text-align: center;
@@ -251,7 +249,8 @@ td select {
     font-size: 0.9rem;
     cursor: pointer;
     transition: all 0.2s;
-    appearance: none; /* Quita flecha por defecto para look más limpio */
+    appearance: none;
+    /* Quita flecha por defecto para look más limpio */
     text-align: center;
 }
 
@@ -328,20 +327,26 @@ td select:focus {
     .actions {
         grid-template-columns: 1fr 1fr;
     }
+
     #clear-btn {
         grid-column: span 2;
     }
+
     body {
         padding: 15px;
     }
-    th, td {
+
+    th,
+    td {
         padding: 10px 5px;
         font-size: 0.8rem;
     }
+
     tbody td:first-child {
         width: 80px;
         font-size: 0.75rem;
     }
+
     .input-group {
         flex-direction: column;
     }
