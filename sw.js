@@ -1,4 +1,4 @@
-const CACHE_NAME = 'listplanner-v1';
+const CACHE_NAME = 'listplanner-v2';
 const ASSETS = [
     './',
     './index.html',
